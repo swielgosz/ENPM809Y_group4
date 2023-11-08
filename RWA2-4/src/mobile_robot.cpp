@@ -14,7 +14,7 @@ void RWA2::MobileRobot::move(double distance, double angle) {}
 void RWA2::MobileRobot::print_status() {
   std::cout << "================\n";
   std::cout
-      << "Position: (" << position_.first << ", "
+      << " Model: " << model_ << ", Position: (" << position_.first << ", "
       << position_.second << "), Orientation: " << orientation_
       << ", Speed: " << speed_ << "\n";
 }
