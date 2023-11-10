@@ -63,11 +63,11 @@ void RWA2::AerialRobot::print_status() {
 // // Implement move method
 // void RWA2::AerialRobot::move(double distance, double angle) {
 
-//   if (distance > 25) { // check that distance <= 25 m; if true, proceed
-//     std::cout << "Max distance value is 25 m.\n\n";
+//   if (distance > 50) { // check that distance <= 25 m; if true, proceed
+//     std::cout << "Max distance value is 50 m.\n\n";
 //   } else {
 //     // required battery to take off to distance and land, where 2% of batter is consumed each m the robot moves
-//     double required_battery = 2*2*distance;
+//     double required_battery = 2*distance;
 
 //     // if batter does not have enough charge, land and charge
 //     if (battery_.get_current_charge() <required_battery) {
@@ -81,10 +81,10 @@ void RWA2::AerialRobot::print_status() {
 //     // when charge is sufficient, move robot
 //     battery_.discharge(required_battery);
 //     sensors_.read_data(5); // NOT SURE IF THIS IS CORRECT WAY TO CALL
-//     take_off(distance);
+//     take_off(distance/2);
 //     rotate(angle);
 //     land();
-//     std::cout << model_ << " reached an altitude of " << distance << " meters and then landed.\n";
+//     std::cout << model_ << " reached an altitude of " << distance/2 << " meters and then landed.\n";
 //     print_status();
 //   }
 // }
