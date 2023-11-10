@@ -58,11 +58,11 @@ public:
    * @param distance distance to increase altitude by
    * @param angle angle to rotate aerial robot
    */
-  virtual void move(double distance, double angle) override;
+  virtual void move(double distance, double angle) override final;
   /**
    * @brief Print base class and AerialRobot class attributes
    */
-  virtual void print_status() override;
+  virtual void print_status() override final;
 
 protected:  
   /**
@@ -70,7 +70,7 @@ protected:
    * 
    * @param angle angle to rotate aerial robot by (in degrees)
    */
-  virtual void rotate(double angle) override; 
+  virtual void rotate(double angle) override final; 
 
 private:
   /**
