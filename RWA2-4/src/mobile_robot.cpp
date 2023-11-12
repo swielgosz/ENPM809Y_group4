@@ -1,4 +1,12 @@
 #include "mobile_robot.h"
+#include <iostream>
+#include <thread>
+
+
+void RWA2::MobileRobot::add_sensor(
+    std::unique_ptr<RWA2::Sensor> sensor) {
+  sensors_.push_back(std::move(sensor));
+}
 
 void RWA2::MobileRobot::rotate(double angle) {
   if (angle >= 0) {

@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <utility>
+#include <vector>
+#include "sensor.h"
+#include "battery.h"
 
 namespace RWA2 {
 class MobileRobot{
@@ -19,9 +22,9 @@ class MobileRobot{
 
   // BATTERY AND SENSOR - INCLUDE THESE WHEN SENSOR AND BATTERY CLASS ARE CREATED
   //<! battery of the robot
-  //RWA2::Battery battery_;
+  RWA2::Battery battery_;
   //<! list of sensors for the robot
-  //std::vector<std::unique_ptr<RWA2::Sensor>> sensors_;
+  std::vector<std::unique_ptr<RWA2::Sensor>> sensors_;
   
   // ==================== constructors ====================
 public:
@@ -32,7 +35,7 @@ public:
   MobileRobot() : 
     position_{std::make_pair(0, 0)}, 
     orientation_{0},
-    speed_{0.0}{}
+    speed_{0.0} {}
 
   /**
    * @brief Construct a new Mobile Robot object
@@ -47,6 +50,25 @@ public:
       orientation_{orientation},
       speed_{0.0},
       model_{model} {}
+
+  /**
+   * @brief Construct a new Mobile Robot object
+   * 
+   * @param x x coordinate 
+   * @param y y coordinate
+   * @param orientation orientation of the robot (in degrees)
+   * @param model model of the robot
+   * @param battery_model model of the robot's battery
+   * @param current_charge robot's battery level
+   * @param is_charging battery charging bool 
+   */    
+  
+  MobileRobot(double x, double y, double orientation, std::string model, std::string battery_model, int current_charge = 100, bool is_charging = false)
+      : position_{std::make_pair(x, y)}, 
+      orientation_{orientation},
+      speed_{0.0},
+      model_{model},
+      battery_{battery_model,current_charge,is_charging} {}
 
   /**
    * @brief Construct a new Mobile Robot object
@@ -119,6 +141,12 @@ protected:
   * @brief print the status of the robot (position, orientation, and speed)
   */
   virtual void print_status();
+  /**
+   * @brief Add a sensor to the robot
+   *
+   * @param sensor sensor to add
+   */
+  void add_sensor(std::unique_ptr<RWA2::Sensor> sensor);
 
 
 };  // class MobileRobot

@@ -41,8 +41,8 @@ class LeggedRobot: public MobileRobot {
    * - sixth argument: leg strength
    * - seventh argument: number of legs (default = 2)
    */
-  LeggedRobot(double x_position, double y_position, double orientation, std::string model, double height, int leg_strength, int number_of_legs = 2): 
-  MobileRobot(x_position, y_position, orientation, model), 
+  LeggedRobot(double x_position, double y_position, double orientation, std::string model, std::string battery_model, double height, int leg_strength, int current_charge = 100, bool is_charging = false, int number_of_legs = 2): 
+  MobileRobot(x_position, y_position, orientation, model, battery_model, current_charge, is_charging), 
   height_{height},
   leg_strength_{leg_strength},
   number_of_legs_{number_of_legs} {}

@@ -1,6 +1,6 @@
 #include "legged_robot.h"
-// #include "battery.h"  INCLUDE THIS WHEN BATTERY CLASS IS MADE
-// #include "sensor.h"  INCLUDE THIS WHEN SENSOR CLASS IS MADE
+#include "battery.h" 
+#include "sensor.h"  
 #include <thread>
 #include <chrono>
 
@@ -24,12 +24,9 @@ void RWA2::LeggedRobot::print_status() {
   RWA2::MobileRobot::print_status();
   std::cout << "================\n";
   std::cout
-      << "Height (cm): " << height_*100 << ", Leg strength: " << leg_strength_ <<", Number of legs: " << number_of_legs_ << "\n";
+      << "Height (cm): " << height_*100 << ", Leg strength: " << leg_strength_ <<", Number of legs: " << number_of_legs_ << "\n\n";
 }
 
-// void RWA2::LeggedRobot::move() {
-//   std::cout << "LeggedRobot: Moving\n";
-// }
 
 // Implement move method
 void RWA2::LeggedRobot::move(double distance, double angle) {
@@ -49,10 +46,13 @@ void RWA2::LeggedRobot::move(double distance, double angle) {
 
     // when charge is sufficient, move robot
     battery_.discharge(required_battery);
-    sensors_.read_data(5); // NOT SURE IF THIS IS CORRECT WAY TO CALL
+    // sensors_.read_data(5); // NOT SURE IF THIS IS CORRECT WAY TO CALL
+    for (const auto& sensor : sensors_) {
+    sensor->read_data(5);
+    }
     rotate(angle);
     jump(distance);
-    kick()
+    kick();
     print_status();
   }
 }

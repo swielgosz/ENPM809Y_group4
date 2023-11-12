@@ -25,13 +25,12 @@ class AerialRobot : public MobileRobot {
   //<! flying status of robot
   bool is_flying_{false};
 
-// ==================== constructors ====================
+  // ==================== constructors ====================
 
-public:
+ public:
   /**
    * @brief Construct a new AerialRobot object
    */
-
   // Default ctor
   AerialRobot(): MobileRobot(), altitude_{0.0}, is_flying_{false} {}
 
@@ -40,10 +39,11 @@ public:
    * - first argument: x position
    * - second argument: y position
    * - third argument: orientation
-   * - fourth argument: has wings
+   * - fourth argument: model
+   * - fifth argument: has wings
    */
-  AerialRobot(double x_position, double y_position, double orientation, std::string model, bool has_wings) 
-  : MobileRobot(x_position, y_position, orientation, model), 
+  AerialRobot(double x_position, double y_position, double orientation, std::string model, std::string battery_model, bool has_wings, int current_charge = 100, bool is_charging = false) 
+  : MobileRobot(x_position, y_position, orientation, model, battery_model, current_charge, is_charging), 
   has_wings_{has_wings},
   altitude_{0.0},
   is_flying_{false} {}
@@ -51,7 +51,7 @@ public:
 
   // ==================== methods ====================
 
-public:
+ public:
   /**
    * @brief Move aerial robot 
    *
@@ -64,7 +64,7 @@ public:
    */
   virtual void print_status() override final;
 
-protected:  
+ protected:  
   /**
    * @brief Rotate aerial robot 
    * 
@@ -72,7 +72,7 @@ protected:
    */
   virtual void rotate(double angle) override final; 
 
-private:
+ private:
   /**
    * @brief Aerial Robot takes off to given altitude
    *
