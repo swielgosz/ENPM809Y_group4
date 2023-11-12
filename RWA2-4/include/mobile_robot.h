@@ -6,7 +6,7 @@
 namespace RWA2 {
 class MobileRobot{
  
- public:
+ protected:
   // ==================== attributes ====================
   // Position of the robot
   std::pair<double, double> position_;
@@ -24,6 +24,7 @@ class MobileRobot{
   //std::vector<std::unique_ptr<RWA2::Sensor>> sensors_;
   
   // ==================== constructors ====================
+public:
   /**
    * @brief Construct a new Mobile Robot object
    */
@@ -95,6 +96,7 @@ class MobileRobot{
 
 
   // ==================== methods ====================
+protected:
   /**
    * @brief Rotate the robot by a given angle
    *
@@ -105,7 +107,7 @@ class MobileRobot{
   // ONLY USE THIS FOR TESTING - otherwise it should be protected, not private
   // virtual void print_status();
 
- protected:
+ public:
   /**
   * @brief Move the robot by a given distance and angle
   *
