@@ -17,6 +17,7 @@ void RWA2::LeggedRobot::jump(double amount) {
 }
 
 void RWA2::LeggedRobot::rotate(double angle) {
+  RWA2::MobileRobot::rotate(angle);
   std::cout << "LeggedRobot::"<<RWA2::MobileRobot::model_ <<" rotated " << angle << " degrees.\n"; 
 }
 

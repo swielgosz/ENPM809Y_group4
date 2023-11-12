@@ -48,6 +48,7 @@ void RWA2::AerialRobot::land() {
 
 // Implement rotate method
 void RWA2::AerialRobot::rotate(double angle) {
+  RWA2::MobileRobot::rotate(angle);
   std::cout << "AerialRobot::"<<RWA2::MobileRobot::model_ <<" rotated " << angle << " degrees.\n"; 
 }
 
